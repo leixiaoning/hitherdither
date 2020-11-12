@@ -172,7 +172,8 @@ class Palette(object):
             argument = np.argsort(p[:, sort_dim])
             p = p[argument, :]
             m = np.median(p[:, sort_dim])
-            split_mask = p[:, sort_dim] >= m
+            #split_mask = p[:, sort_dim] >= m
+            split_mask = p[:, sort_dim] > m # or we can use mean
             return [p[~split_mask, :].copy(), p[split_mask, :].copy()]
 
         # Do actual splitting loop.
